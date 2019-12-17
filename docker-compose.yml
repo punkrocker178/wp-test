@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+  mysql: 
+    image: mysql:5.7
+    container_name: mysql_docker
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes: 
+      - ./docker/database:/var/lib/mysql
+  nginx:
+    image: nginx:latest
+    container_name: nginx_docker
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes: 
+      - ./docker/sites/:/etc/nginx/conf.d/
+      - type: bind
+        source: .
+        target: /project
+    working_dir: /project
+  fpm:
+    build: ./docker/dockerBuild
+    image: php:fpm_composer
+    container_name: php_fpm
+    restart: always
+    ports: 
+      - "9000:80"
+    volumes: 
+      - type: bind
+        source: .
+        target: /project
+    working_dir: /project
