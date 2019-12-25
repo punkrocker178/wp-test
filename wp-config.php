@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-define('WP_MEMORY_LIMIT', '64M');
+define('WP_MEMORY_LIMIT', '256M');
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -31,7 +31,7 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', 'root' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql' );
+define( 'DB_HOST', 'mysql_wp');
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

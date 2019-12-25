@@ -23,3 +23,6 @@ node_modules/
 *.sqlite
 
 docker/database/*
+docker/sites/*
+docker-compose.yml
+wp-config.php

@@ -1,8 +1,8 @@
 version: '3.5'
 services:
-  mysql: 
+  mysql_wp: 
     image: mysql:5.7
-    container_name: mysql_docker
+    container_name: mysql_wp_docker
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     ports:
@@ -11,23 +11,23 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes: 
       - ./docker/database:/var/lib/mysql
-  nginx:
+  nginx_wp:
     image: nginx:latest
-    container_name: nginx_docker
+    container_name: nginx_wp_docker
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "4430:443"
     volumes: 
       - ./docker/sites/:/etc/nginx/conf.d/
       - type: bind
         source: .
         target: /project
     working_dir: /project
-  fpm:
+  fpm_wp:
     build: ./docker/dockerBuild
-    image: php:fpm_composer
-    container_name: php_fpm
+    image: php:fpm-composer
+    container_name: php_fpm_wp_docker
     restart: always
     ports: 
       - "9000:80"
