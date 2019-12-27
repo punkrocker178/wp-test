@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-define('WP_MEMORY_LIMIT', '64M');
+define('WP_MEMORY_LIMIT', '256M');
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -83,6 +83,8 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 
+define( 'JETPACK_DEV_DEBUG', true );
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
@@ -92,3 +94,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
+

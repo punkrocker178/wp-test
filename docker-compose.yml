@@ -24,6 +24,9 @@ services:
         source: .
         target: /project
     working_dir: /project
+    dns: 
+      - 192.168.2.6
+      - 8.8.8.8
   fpm:
     build: ./docker/dockerBuild
     image: php:fpm_composer
