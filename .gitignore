@@ -24,5 +24,4 @@ node_modules/
 
 docker/database/*
 docker/sites/*
-docker-compose.yml
-wp-config.php
+.env.local
