@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <?php wp_head(); ?>
+    <?php wp_head();?>
   </head>
   <body>
     <header class="site-header">
@@ -12,7 +12,7 @@
       <div class="site-header__menu group">
         <nav class="main-navigation">
           <ul class="min-list group">
-            <li><a href="#">About Us</a></li>
+            <li><a href="<?= get_bloginfo('url') . '/about'?>">About Us</a></li>
             <li><a href="#">Programs</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Campuses</a></li>
