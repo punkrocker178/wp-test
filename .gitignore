@@ -24,4 +24,4 @@ node_modules/
 
 docker/database/*
 docker/sites/*
-.env.local
+.env
