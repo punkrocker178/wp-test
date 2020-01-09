@@ -16,7 +16,7 @@ while (have_posts()) {
   <div class="container container--narrow page-section">
 
     <?php
-    if ($parentID != null) {
+    if ($parentID) {
     ?>
       <div class="metabox metabox--position-up metabox--with-home-link">
         <p>
@@ -28,13 +28,30 @@ while (have_posts()) {
     <?php
     }
     ?>
-    <!-- <div class="page-links">
-      <h2 class="page-links__title"><a href="#">About Us</a></h2>
+
+    <?php 
+      $pagesArray = get_pages(array(
+        'child_of' => get_the_ID(),
+      ));
+      if ($parentID || $pagesArray) {
+    ?>
+    <div class="page-links">
+      <h2 class="page-links__title"><a href="<?= get_permalink($parentID) ?>"><?= get_the_title($parentID) ?></a></h2>
       <ul class="min-list">
-        <li class="current_page_item"><a href="#">Our History</a></li>
-        <li><a href="#">Our Goals</a></li>
+      <?php 
+        if ($parentID) {
+          $childrenOf = $parentID;
+        } else {
+          $childrenOf = get_the_ID();
+        }
+        wp_list_pages(array(
+          'title_li' => NULL,
+          'child_of' => $childrenOf
+        ));
+      ?>
       </ul>
-    </div> -->
+    </div>
+    <?php } ?>
 
     <div class="generic-content">
       <?= the_content() ?>

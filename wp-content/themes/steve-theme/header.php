@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html <?= language_attributes(); ?>>
   <head>
+    <meta charset="<?= get_bloginfo('charset')?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1"
     <?php wp_head();?>
   </head>
-  <body>
+  <body <?= body_class() ?>>
     <header class="site-header">
     <div class="container">
       <h1 class="school-logo-text float-left"><a href="#"><strong>Fictional</strong> University</a></h1>
@@ -11,13 +13,18 @@
       <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
       <div class="site-header__menu group">
         <nav class="main-navigation">
-          <ul class="min-list group">
+          <?php
+            wp_nav_menu(array(
+              'theme_location' => 'headerMenu'
+            )) 
+          ?>
+          <!-- <ul class="min-list group">
             <li><a href="<?= get_bloginfo('url') . '/about'?>">About Us</a></li>
             <li><a href="#">Programs</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Campuses</a></li>
             <li><a href="#">Blog</a></li>
-          </ul>
+          </ul> -->
         </nav>
         <div class="site-header__util">
           <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
