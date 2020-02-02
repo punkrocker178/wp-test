@@ -22,8 +22,8 @@ services:
       - ./docker/sites/:/etc/nginx/conf.d/
       - type: bind
         source: .
-        target: /project
-    working_dir: /project
+        target: ${PROJECT_DIR}
+    working_dir: ${PROJECT_DIR}
   fpm_wp:
     build: ./docker/dockerBuild
     image: php:fpm-composer
@@ -34,5 +34,5 @@ services:
     volumes: 
       - type: bind
         source: .
-        target: /project
-    working_dir: /project
+        target: ${PROJECT_DIR}
+    working_dir: ${PROJECT_DIR}
