@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes: 
-      - ./docker/database:/var/lib/mysql
+      - docker/database:/var/lib/mysql
   nginx_wp:
     image: nginx:latest
     container_name: ${DOCKER_NGINX_CONTAINER_NAME}
@@ -19,10 +19,9 @@ services:
       - "${DOCKER_NGINX_EXPOSE_PORT}:${DOCKER_NGINX_INTERNAL_PORT}"
       - "4430:443"
     volumes: 
-      - ./docker/sites/:/etc/nginx/conf.d/
-      - type: bind
-        source: .
-        target: ${PROJECT_DIR}
+      - ./docker/sites/:/etc/nginx/conf.d
+      - ./docker/logs/:/var/log/nginx
+      - .:${PROJECT_DIR}
     working_dir: ${PROJECT_DIR}
   fpm_wp:
     build: ./docker/dockerBuild
@@ -32,7 +31,5 @@ services:
     ports: 
       - "${DOCKER_FPM_EXPOSE_PORT}:${DOCKER_FPM_INTERNAL_PORT}"
     volumes: 
-      - type: bind
-        source: .
-        target: ${PROJECT_DIR}
+      - .:${PROJECT_DIR}
     working_dir: ${PROJECT_DIR}

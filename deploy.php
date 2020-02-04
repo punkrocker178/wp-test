@@ -14,12 +14,12 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', []);
-set('shared_dirs', [
-    "docker"
-]);
+set('shared_dirs', []);
 
 // Writable dirs by web server 
-set('writable_dirs', []);
+set('writable_dirs', [
+    "docker/database"
+]);
 
 
 // Hosts
