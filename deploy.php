@@ -18,7 +18,6 @@ set('shared_dirs', []);
 
 // Writable dirs by web server 
 set('writable_dirs', [
-    "docker/database"
 ]);
 
 
