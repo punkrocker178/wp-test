@@ -14,7 +14,8 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', [
-    "docker-compose.yml"
+    "docker-compose.yml",
+    ".env"
 ]);
 set('shared_dirs', []);
 
