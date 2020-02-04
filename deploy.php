@@ -13,7 +13,9 @@ set('repository', 'git@github.com:punkrocker178/wp-test.git');
 set('git_tty', true); 
 
 // Shared files/dirs between deploys 
-set('shared_files', []);
+set('shared_files', [
+    "docker-compose.yml"
+]);
 set('shared_dirs', []);
 
 // Writable dirs by web server 
