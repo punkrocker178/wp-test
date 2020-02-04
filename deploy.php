@@ -17,7 +17,9 @@ set('shared_files', [
     "docker-compose.yml",
     ".env"
 ]);
-set('shared_dirs', []);
+set('shared_dirs', [
+    "docker/database"
+]);
 
 // Writable dirs by web server 
 set('writable_dirs', [
