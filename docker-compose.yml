@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes: 
-      - docker/database:/var/lib/mysql
+      - ./docker/database:/var/lib/mysql
   nginx_wp:
     image: nginx:latest
     container_name: ${DOCKER_NGINX_CONTAINER_NAME}
