@@ -12,17 +12,22 @@ set('repository', 'git@github.com:punkrocker178/wp-test.git');
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
 
+set('writable_use_sudo', true);
+set('cleanup_use_sudo', true);
+
 // Shared files/dirs between deploys 
 set('shared_files', [
     "docker-compose.yml",
     ".env"
 ]);
 set('shared_dirs', [
-    "docker/database"
+    "docker/database",
+    "docker/logs"
 ]);
 
 // Writable dirs by web server 
 set('writable_dirs', [
+    "docker/database"
 ]);
 
 
