@@ -17,9 +17,9 @@ set('cleanup_use_sudo', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', [
-    "docker-compose.yml",
-    ".env",
-    "wp-config.php"
+    // "docker-compose.yml",
+    // ".env",
+    // "wp-config.php"
 ]);
 set('shared_dirs', [
     "docker/database",
