@@ -32,5 +32,5 @@ services:
       - "${DOCKER_FPM_EXPOSE_PORT}:${DOCKER_FPM_INTERNAL_PORT}"
     volumes: 
       - .:${PROJECT_DIR}
-      - ./../../shared:/shared/
+      - ./../../shared:/srv/shared/
     working_dir: ${PROJECT_DIR}
