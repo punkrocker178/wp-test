@@ -11,13 +11,14 @@ set('repository', 'git@github.com:punkrocker178/wp-test.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
-set('http_user', 'stevele');
+set('http_user', 'www-data');
+set('writable_mode', 'chown');
 set('writable_use_sudo', true);
 set('cleanup_use_sudo', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', [
-    // "docker-compose.yml",
+    "docker-compose.yml",
     ".env",
     "wp-config.php"
 ]);
@@ -30,18 +31,19 @@ set('shared_dirs', [
 // Writable dirs by web server 
 set('writable_dirs', [
     "docker/database",
-    "wp-content/uploads"
+    "wp-content"
 ]);
 
 
 // Hosts
-inventory('.deployment/hosts.yml');
+inventory('./hosts.yml');
 // host('project.com')
 //     ->set('deploy_path', '~/{{application}}');    
     
 
 // Tasks
 
+// Needs to check if docker is running
 task('stop-docker', function() {
     write('Before release');
     cd('{{deploy_path}}/current');
@@ -53,7 +55,7 @@ task('start-docker', function() {
     run('docker-compose up -d');
 });
 
-// before('deploy:release', 'stop-docker');
+before('deploy:release', 'stop-docker');
 
 
 desc('Deploy your project');
