@@ -18,8 +18,8 @@ set('cleanup_use_sudo', true);
 // Shared files/dirs between deploys 
 set('shared_files', [
     // "docker-compose.yml",
-    // ".env",
-    // "wp-config.php"
+    ".env",
+    "wp-config.php"
 ]);
 set('shared_dirs', [
     "docker/database",
@@ -53,7 +53,7 @@ task('start-docker', function() {
     run('docker-compose up -d');
 });
 
-before('deploy:release', 'stop-docker');
+// before('deploy:release', 'stop-docker');
 
 
 desc('Deploy your project');

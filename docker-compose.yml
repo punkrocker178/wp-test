@@ -22,6 +22,7 @@ services:
       - ./docker/sites/:/etc/nginx/conf.d
       - ./docker/logs/:/var/log/nginx
       - .:${PROJECT_DIR}
+      - ./../../shared:/srv/shared/
     working_dir: ${PROJECT_DIR}
   fpm_wp:
     build: ./docker/dockerBuild
