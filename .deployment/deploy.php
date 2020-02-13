@@ -44,18 +44,22 @@ inventory('./hosts.yml');
 // Tasks
 
 // Needs to check if docker is running
-task('stop-docker', function() {
-    write('Before release');
-    cd('{{deploy_path}}/current');
-    run('docker-compose down');
-});
+// task('stop-docker', function() {
+//     writeln('Stopping docker');   
+//     'if [[ -z "$(docker ps -a -q)" ]]; then';
+//         'echo $(docker ps -a -q);';
+//     'else';
+//         'cd {{deploy_path}}/current;';
+//         'docker-compose down;';
+//     'fi;';
+// });
 
-task('start-docker', function() {
-    cd('{{deploy_path}}/current');
-    run('docker-compose up -d');
-});
+// task('start-docker', function() {
+//     cd('{{deploy_path}}/current');
+//     run('docker-compose up -d');
+// });
 
-before('deploy:release', 'stop-docker');
+// before('deploy:release', 'stop-docker');
 
 
 desc('Deploy your project');
@@ -75,7 +79,7 @@ task('deploy', [
     'success'
 ]);
 
-after('deploy', 'start-docker');
+// after('deploy', 'start-docker');
 
 // [Optional] If deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
