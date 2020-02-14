@@ -17,13 +17,13 @@ services:
     restart: always
     ports:
       - "${DOCKER_NGINX_EXPOSE_PORT}:${DOCKER_NGINX_INTERNAL_PORT}"
-      - "4430:443"
+      - "443:443"
     volumes: 
-      - ./docker/sites/:/etc/nginx/conf.d/
-      - type: bind
-        source: .
-        target: /project
-    working_dir: /project
+      - ./docker/sites/:/etc/nginx/conf.d
+      - ./docker/logs/:/var/log/nginx
+      - .:${PROJECT_DIR}
+      - ./../../shared:/srv/shared/
+    working_dir: ${PROJECT_DIR}
   fpm_wp:
     build: ./docker/dockerBuild
     image: php:fpm-composer
@@ -32,7 +32,6 @@ services:
     ports: 
       - "${DOCKER_FPM_EXPOSE_PORT}:${DOCKER_FPM_INTERNAL_PORT}"
     volumes: 
-      - type: bind
-        source: .
-        target: /project
-    working_dir: /project
+      - .:${PROJECT_DIR}
+      - ./../../shared:/srv/shared/
+    working_dir: ${PROJECT_DIR}

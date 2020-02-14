@@ -23,5 +23,4 @@ node_modules/
 *.sqlite
 
 docker/database/*
-docker/sites/*
-.env
+# docker/sites/*
