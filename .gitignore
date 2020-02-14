@@ -25,4 +25,4 @@ node_modules/
 docker/database/*
 # docker/sites/*
 .env
-docker-compose-yml
+docker-compose.yml
