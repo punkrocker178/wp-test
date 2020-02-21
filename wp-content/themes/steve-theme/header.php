@@ -18,13 +18,13 @@
               'theme_location' => 'headerMenu'
             )) 
           ?>
-          <!-- <ul class="min-list group">
-            <li><a href="<?= get_bloginfo('url') . '/about'?>">About Us</a></li>
+          <ul class="min-list group">
+            <li <?php if(is_page('about-us')) echo 'class="current-menu-item"' ?>><a href="<?php site_url('/about-us') ?>">About Us</a></li>
             <li><a href="#">Programs</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Campuses</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul> -->
+            <li <?php if (get_post_type() == 'post') echo 'class="current-menu-item"' ?>><a href="<?php site_url('/blog') ?>">Blog</a></li>
+          </ul>
         </nav>
         <div class="site-header__util">
           <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
